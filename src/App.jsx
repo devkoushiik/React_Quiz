@@ -5,6 +5,7 @@ import Loader from "./comp/Loader";
 import Error from "./comp/Error";
 import StartScreen from "./comp/StartScreen";
 import Question from "./comp/Question";
+import Next from "./comp/Next";
 
 const initialState = {
   questions: [],
@@ -35,7 +36,7 @@ function reducer(state, action) {
       };
 
     case "nextQuestion":
-      return { ...state, index: state.index + 1 };
+      return { ...state, index: state.index + 1, answer: null };
 
     // default case
     default:
@@ -69,11 +70,14 @@ function App() {
             <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
           )}
           {status === "active" && (
-            <Question
-              question={questions[index]}
-              dispatch={dispatch}
-              answer={answer}
-            />
+            <>
+              <Question
+                question={questions[index]}
+                dispatch={dispatch}
+                answer={answer}
+              />
+              <Next dispatch={dispatch} answer={answer} />
+            </>
           )}
         </Main>
       </div>

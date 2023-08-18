@@ -8,6 +8,35 @@
   --color-accent: #ffa94d;
 }
 
+.logo {
+  height: 11em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  animation: logo-spin infinite 20s linear;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
 
 * {
@@ -57,13 +86,14 @@ body {
   border-radius: 100px;
 }
 
-img {
+/* img {
   width: 14rem;
-}
+} */
 
 h1 {
   font-family: "Codystar";
   font-size: 5.6rem;
+  margin-right: 16rem;
 }
 
 h2 {
@@ -126,6 +156,7 @@ progress {
   cursor: pointer;
   border-radius: 100px;
   transition: 0.3s;
+  margin-right: 39%;
 }
 
 .btn:not([disabled]):hover {
