@@ -1,14 +1,22 @@
-const Next = ({ dispatch, answer }) => {
+const Next = ({ dispatch, answer, index, numQuestions }) => {
   if (answer === null) return null;
-  return (
-    <div>
+  if (index < numQuestions - 1)
+    return (
       <button
         onClick={() => dispatch({ type: "nextQuestion" })}
         className="btn btn-ui"
       >
         Next
       </button>
-    </div>
-  );
+    );
+  if (index === numQuestions - 1)
+    return (
+      <button
+        onClick={() => dispatch({ type: "finished" })}
+        className="btn btn-ui"
+      >
+        Finished
+      </button>
+    );
 };
 export default Next;
