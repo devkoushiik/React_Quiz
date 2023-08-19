@@ -6,6 +6,7 @@ import Error from "./comp/Error";
 import StartScreen from "./comp/StartScreen";
 import Question from "./comp/Question";
 import Next from "./comp/Next";
+import Progress from "./comp/Progress";
 
 const initialState = {
   questions: [],
@@ -17,6 +18,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
+  const question = state.questions.at(state.index);
   switch (action.type) {
     case "dataReceived":
       return { ...state, questions: action.payload, status: "ready" };
@@ -25,7 +27,6 @@ function reducer(state, action) {
     case "start":
       return { ...state, status: "active" };
     case "newAnswer":
-      const question = state.questions.at(state.index);
       return {
         ...state,
         answer: action.payload,
@@ -45,7 +46,7 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [{ questions, status, index, answer }, dispatch] = useReducer(
+  const [{ questions, status, index, answer, points }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -58,7 +59,9 @@ function App() {
       })
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
+  // some vars
   const numQuestions = questions.length;
+  const maxPossiblePoints = questions.reduce((acc, cur) => acc + cur.points, 0);
   return (
     <>
       <div className="app">
@@ -71,6 +74,13 @@ function App() {
           )}
           {status === "active" && (
             <>
+              <Progress
+                index={index}
+                numQuestion={numQuestions}
+                points={points}
+                maxPossiblePoints={maxPossiblePoints}
+                answer={answer}
+              />
               <Question
                 question={questions[index]}
                 dispatch={dispatch}
