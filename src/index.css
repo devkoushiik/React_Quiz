@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
 :root {
   --color-darkest: #343a40;
   --color-dark: #495057;
@@ -36,8 +37,6 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
 
 * {
   margin: 0;
@@ -92,7 +91,7 @@ body {
 
 h1 {
   font-family: "Codystar";
-  font-size: 5.6rem;
+  font-size: 448%;
   margin-right: 16rem;
 }
 
@@ -156,7 +155,7 @@ progress {
   cursor: pointer;
   border-radius: 100px;
   transition: 0.3s;
-  margin-right: 39%;
+  /* margin-right: 39%; */
 }
 
 .btn:not([disabled]):hover {
@@ -171,9 +170,21 @@ progress {
   cursor: not-allowed;
 }
 
-.btn-ui {
-  float: right;
+.restart {
+  margin-left: 11rem;
 }
+
+.next {
+  margin-left: 40rem;
+}
+.finish {
+  font-size: 2rem;
+  margin-left: 48rem;
+}
+
+/* .btn-ui {
+  float: right;
+} */
 
 .options {
   display: flex;
@@ -242,6 +253,7 @@ progress {
   border: 2px solid var(--color-dark);
   padding: 1.35rem 2.8rem;
   border-radius: 100px;
+  border-color: red;
 }
 
 /* CREDIT: https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */

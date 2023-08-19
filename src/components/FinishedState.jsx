@@ -11,12 +11,12 @@ const FinishedState = ({ points, maxPossiblePoints, highscore, dispatch }) => {
     <>
       <p className="result">
         {emoji} You scored <strong>{points}</strong> out of {maxPossiblePoints}(
-        {Math.ceil(percentage)}%)
+        {Math.ceil(percentage)}% in total)
       </p>
       <p className="highscore">Highest Score : {highscore}</p>
       <button
         onClick={() => dispatch({ type: "restart" })}
-        className="btn btn-ui"
+        className="btn btn-ui restart"
       >
         Restart Again
       </button>
