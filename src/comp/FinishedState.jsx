@@ -1,4 +1,4 @@
-const FinishedState = ({ points, maxPossiblePoints, highscore }) => {
+const FinishedState = ({ points, maxPossiblePoints, highscore, dispatch }) => {
   const percentage = (points / maxPossiblePoints) * 100;
   let emoji;
   if (percentage === 100) emoji = "⭐";
@@ -14,6 +14,12 @@ const FinishedState = ({ points, maxPossiblePoints, highscore }) => {
         {Math.ceil(percentage)}%)
       </p>
       <p className="highscore">Highest Score : {highscore}</p>
+      <button
+        onClick={() => dispatch({ type: "restart" })}
+        className="btn btn-ui"
+      >
+        Restart Again
+      </button>
     </>
   );
 };
